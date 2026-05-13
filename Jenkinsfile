@@ -4,17 +4,12 @@ pipeline {
         maven 'maven'
     }
     stages {
-        stage() {
+        stage('Trivy scan') {
             steps {
-
+                sh 'trivy fs --exit-code 1 --severity HIGH,CRITICAL .'
             }
         }
-        stage() {
-            steps {
-                
-            }
-        }
-        stage() {
+        /*stage() {
             steps {
                 
             }
@@ -24,5 +19,10 @@ pipeline {
                 
             }
         }
+        stage() {
+            steps {
+                
+            }
+        }*/
     }
 }
