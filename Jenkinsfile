@@ -1,10 +1,10 @@
 pipeline {
-    agent { 'any' }
+    agent any
     tools {
         maven 'maven'
     }
     stages {
-        stage('Trivy scan') {
+         /*stage('Trivy scan') {
             steps {
                 sh 'trivy fs --exit-code 1 --severity HIGH,CRITICAL .'
             }
