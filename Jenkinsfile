@@ -5,9 +5,9 @@ pipeline {
     }
     stages {
          
-        stage() {
+        stage('Build') {
             steps {
-                
+                echo 'Code is already checked out and available!'
             }
         }
         /*stage('Trivy scan') {
