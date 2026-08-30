@@ -10,11 +10,12 @@ pipeline {
                 echo 'Code is already checked out and available!'
             }
         }
-        /*stage('Trivy scan') {
+        stage('Trivy scan') {
             steps {
                 sh 'trivy fs --exit-code 1 --severity HIGH,CRITICAL .'
             }
         }
+/*
         stage() {
             steps {
                 
