@@ -39,6 +39,12 @@ pipeline {
                sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL "java-devsecops-demo:$BUILD_NUMBER"' 
             }
         }
+        stage('Load image to kind cluster') {
+          steps {
+            sh 'kind load docker-image "java-devsecops-demo:$BUILD_NUMBER" --name k8s-multi-node-cluster'
+            sh 'kind load docker-image "java-devsecops-demo:latest" --name k8s-multi-node-cluster'
+          }
+        }
 /*
         stage() {
             steps {
