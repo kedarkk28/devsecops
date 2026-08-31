@@ -50,6 +50,7 @@ pipeline {
                 sh 'sed -i "s|image:.*|image: java-devsecops-demo:$BUILD_NUMBER|g" deploy.yaml'
             }
         }
+        
         stage('Deploy to Kubernetes') {
     steps {
         sh '''#!/bin/bash -l
@@ -60,11 +61,6 @@ kubectl apply -f svc.yaml
 
 '''    
     }
-}
-    post {
-    success { echo "Build ${env.BUILD_NUMBER} succeeded" }
-    failure { echo "Build ${env.BUILD_NUMBER} failed" }
-    always  { echo "Build ${env.BUILD_NUMBER} finished" }
 }
 /*
         stage() {
