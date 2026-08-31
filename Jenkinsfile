@@ -70,5 +70,4 @@ kubectl apply -f svc.yaml
                 
             }
         }
-    
-
+*/
