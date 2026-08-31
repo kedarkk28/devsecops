@@ -45,6 +45,12 @@ pipeline {
             sh 'kind load docker-image "java-devsecops-demo:latest" --name k8s-multi-node-cluster'
           }
         }
+        stage('Update Deployment') {
+            steps {
+                sh 'sed -i "s|image:.*|image: java-devsecops-demo:$BUILD_NUMBER|g" deploy.yaml'
+            }
+        }
+        
 /*
         stage() {
             steps {
