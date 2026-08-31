@@ -62,6 +62,8 @@ kubectl apply -f svc.yaml
 '''    
     }
 }
+    }
+}
 /*
         stage() {
             steps {
