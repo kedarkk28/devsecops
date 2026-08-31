@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.javaapp</groupId>
-  <artifactId>cwvj-devsecops-demo</artifactId>
+  <artifactId>java-devsecops-demo</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <name>DevSecOps Demo</name>
 
