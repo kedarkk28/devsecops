@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class App {
 
     // 1) Hardcoded secret (Security Hotspot)
-    private static final String API_KEY = "DEMO_SECRET";
+    //private static final String API_KEY = "DEMO_SECRET";
 
     public static void main(String[] args) throws Exception {
 
