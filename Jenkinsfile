@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Build Image') {
           steps {
-            sh 'docker build --platform linux/amd64 -t "java-devsecops-demo:$BUILD_NUMBER" -t "java-devsecops-demo:latest" .'
+            sh 'docker build -t "java-devsecops-demo:$BUILD_NUMBER" -t "java-devsecops-demo:latest" .'
           }
         }
         stage('Trivy Image Scan') {
