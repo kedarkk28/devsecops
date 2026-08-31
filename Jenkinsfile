@@ -34,6 +34,11 @@ pipeline {
             sh 'docker build --platform linux/amd64 -t "java-devsecops-demo:$BUILD_NUMBER" -t "java-devsecops-demo:latest" .'
           }
         }
+        stage('Trivy Image Scan') {
+            steps {
+               sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL "java-devsecops-demo:$BUILD_NUMBER"' 
+            }
+        }
 /*
         stage() {
             steps {
