@@ -1,5 +1,8 @@
+@Library('shared_lib') _
 pipeline {
-    agent any
+    agent { 
+        label 'sameserver' 
+    }
     tools {
         maven 'maven3'
     }
@@ -18,6 +21,13 @@ pipeline {
                 sh 'trivy fs --exit-code 1 --severity HIGH,CRITICAL .'
             }
         }
+	stage('Production Approval') {
+    steps {
+        timeout(time: 2, unit: 'HOURS') {
+            input message: 'Deploy this build to production?', ok: 'Yes, Release'
+        }
+    }
+}
         stage('Build & Sonar') {
             steps {
                 withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
@@ -31,7 +41,8 @@ pipeline {
         }
         stage('Build Image') {
           steps {
-            sh 'docker build -t "java-devsecops-demo:$BUILD_NUMBER" -t "java-devsecops-demo:latest" .'
+	      buildImage()
+       //     sh 'docker build -t "java-devsecops-demo:$BUILD_NUMBER" -t "java-devsecops-demo:latest" .'
           }
         }
         stage('Trivy Image Scan') {
