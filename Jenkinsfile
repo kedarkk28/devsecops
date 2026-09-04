@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Build Image') {
           steps {
-	      buildImage()
+//	      buildImage()
             sh 'docker build -t "java-devsecops-demo:$BUILD_NUMBER" -t "java-devsecops-demo:latest" .'
           }
         }
