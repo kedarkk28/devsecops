@@ -42,7 +42,7 @@ pipeline {
         stage('Build Image') {
           steps {
 	      buildImage()
-       //     sh 'docker build -t "java-devsecops-demo:$BUILD_NUMBER" -t "java-devsecops-demo:latest" .'
+            sh 'docker build -t "java-devsecops-demo:$BUILD_NUMBER" -t "java-devsecops-demo:latest" .'
           }
         }
         stage('Trivy Image Scan') {
